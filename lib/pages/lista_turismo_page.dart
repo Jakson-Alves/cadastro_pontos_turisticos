@@ -171,7 +171,7 @@ class _ListaTurismoPageState extends State<ListaTurismoPage>{
         context: context,
         builder: (BuildContext context){
           return AlertDialog(
-            title: Text(tarefaAtual == null ? 'Nova Tarefa' : 'Alterar a tarefa ${tarefaAtual.id}'),
+            title: Text(tarefaAtual == null ? 'Nova Tarefa' : 'Editar o registro ${tarefaAtual.id}'),
             content: ConteudoFormDialog(key: key, tarefaAtual: tarefaAtual),
             actions: [
               TextButton(
@@ -207,7 +207,7 @@ class _ListaTurismoPageState extends State<ListaTurismoPage>{
         context: context,
         builder: (BuildContext context){
           return AlertDialog(
-            title: Text(tarefaAtual == null ? 'Nova Tarefa' : 'Alterar a tarefa ${tarefaAtual.id}'),
+            title: Text(tarefaAtual == null ? 'Nova Tarefa' : 'Visualizando o registro ${tarefaAtual.id}'),
             content: ConteudoFormDialog(key: key, tarefaAtual: tarefaAtual),
             actions: [
               TextButton(
