@@ -77,9 +77,11 @@ class _ListaTurismoPageState extends State<ListaTurismoPage>{
             ),
             itemBuilder: (BuildContext context) => _criarItensMenu(),
             onSelected: (String valorSelecinado){
-              if(valorSelecinado == ACAO_EDITAR || valorSelecinado == ACAO_VISUALIZAR ){
+              if(valorSelecinado == ACAO_EDITAR){
                 _abrirForm(tarefaAtual: tarefa, index: index);
-              }else{
+              } else if (valorSelecinado == ACAO_VISUALIZAR){
+                _visualizarForm(tarefaAtual: tarefa, index: index);
+              } else {
                 _excluir(index);
               }
             }
@@ -198,6 +200,42 @@ class _ListaTurismoPageState extends State<ListaTurismoPage>{
         }
     );
   }
+
+  void _visualizarForm({Tarefa? tarefaAtual, int? index}){
+    final key = GlobalKey<ConteudoFormDialogState>();
+    showDialog(
+        context: context,
+        builder: (BuildContext context){
+          return AlertDialog(
+            title: Text(tarefaAtual == null ? 'Nova Tarefa' : 'Alterar a tarefa ${tarefaAtual.id}'),
+            content: ConteudoFormDialog(key: key, tarefaAtual: tarefaAtual),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: Text('Fechar'),
+              ),
+              // TextButton(
+              //   onPressed: () {
+              //     if (key.currentState != null && key.currentState!.dadosValidados()){
+              //       setState(() {
+              //         final novaTarefa = key.currentState!.novaTarefa;
+              //         if(index == null){
+              //           novaTarefa.id = ++_ultimoId;
+              //         }else{
+              //           tarefas[index] = novaTarefa;
+              //         }
+              //         tarefas.add(novaTarefa);
+              //       });
+              //       Navigator.of(context).pop();
+              //     }
+              //   },
+              // ),
+            ],
+          );
+        }
+    );
+  }
+
   void _abrirPaginaFiltro(){
     final navigator = Navigator.of(context);
     navigator.pushNamed(FiltroPage.routeName).then((alterouValores){
