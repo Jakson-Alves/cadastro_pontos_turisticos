@@ -214,22 +214,6 @@ class _ListaTurismoPageState extends State<ListaTurismoPage>{
                 onPressed: () => Navigator.of(context).pop(),
                 child: Text('Fechar'),
               ),
-              // TextButton(
-              //   onPressed: () {
-              //     if (key.currentState != null && key.currentState!.dadosValidados()){
-              //       setState(() {
-              //         final novaTarefa = key.currentState!.novaTarefa;
-              //         if(index == null){
-              //           novaTarefa.id = ++_ultimoId;
-              //         }else{
-              //           tarefas[index] = novaTarefa;
-              //         }
-              //         tarefas.add(novaTarefa);
-              //       });
-              //       Navigator.of(context).pop();
-              //     }
-              //   },
-              // ),
             ],
           );
         }
