@@ -16,6 +16,7 @@ class ListaTurismoPage extends StatefulWidget{
 
 class _ListaTurismoPageState extends State<ListaTurismoPage>{
 
+  static const ACAO_VISUALIZAR = 'visualizar';
   static const ACAO_EDITAR = 'editar';
   static const ACAO_EXCLUIR = 'excluir';
 
@@ -76,7 +77,7 @@ class _ListaTurismoPageState extends State<ListaTurismoPage>{
             ),
             itemBuilder: (BuildContext context) => _criarItensMenu(),
             onSelected: (String valorSelecinado){
-              if(valorSelecinado == ACAO_EDITAR){
+              if(valorSelecinado == ACAO_EDITAR || valorSelecinado == ACAO_VISUALIZAR ){
                 _abrirForm(tarefaAtual: tarefa, index: index);
               }else{
                 _excluir(index);
@@ -123,6 +124,18 @@ class _ListaTurismoPageState extends State<ListaTurismoPage>{
   }
   List<PopupMenuEntry<String>> _criarItensMenu(){
     return[
+      PopupMenuItem(
+        value: ACAO_VISUALIZAR,
+        child: Row(
+          children: [
+            Icon(Icons.remove_red_eye, color: Colors.green),
+            Padding(
+              padding: EdgeInsets.only(left: 10),
+              child: Text('Visualizar'),
+            )
+          ],
+        ),
+      ),
       PopupMenuItem(
         value: ACAO_EDITAR,
         child: Row(
